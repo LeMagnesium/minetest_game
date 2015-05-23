@@ -43,6 +43,7 @@ minetest.register_alias("nyancat", "default:nyancat")
 minetest.register_alias("nyancat_rainbow", "default:nyancat_rainbow")
 minetest.register_alias("sapling", "default:sapling")
 minetest.register_alias("apple", "default:apple")
+minetest.register_alias("obsidian", "default:obsidian")
 
 minetest.register_alias("WPick", "default:pick_wood")
 minetest.register_alias("STPick", "default:pick_stone")
