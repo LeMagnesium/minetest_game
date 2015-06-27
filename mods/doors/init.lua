@@ -25,8 +25,8 @@ function doors.register_door(name, def)
 	if not def.sound_open_door then
 		def.sound_open_door = "doors_door_open"
 	end
-	
-	
+
+
 	minetest.register_craftitem(name, {
 		description = def.description,
 		inventory_image = def.inventory_image,
@@ -100,7 +100,7 @@ function doors.register_door(name, def)
 
 	local tt = def.tiles_top
 	local tb = def.tiles_bottom
-	
+
 	local function after_dig_node(pos, name, digger)
 		local node = minetest.get_node(pos)
 		if node.name == name then
@@ -134,16 +134,16 @@ function doors.register_door(name, def)
 		end
 		local p2 = minetest.get_node(pos).param2
 		p2 = params[p2+1]
-		
+
 		minetest.swap_node(pos, {name=replace_dir, param2=p2})
-		
+
 		pos.y = pos.y-dir
 		minetest.swap_node(pos, {name=replace, param2=p2})
 
 		local snd_1 = def.sound_close_door
-		local snd_2 = def.sound_open_door 
+		local snd_2 = def.sound_open_door
 		if params[1] == 3 then
-			snd_1 = def.sound_open_door 
+			snd_1 = def.sound_open_door
 			snd_2 = def.sound_close_door
 		end
 
@@ -206,18 +206,18 @@ function doors.register_door(name, def)
 			fixed = def.selection_box_bottom
 		},
 		groups = def.groups,
-		
+
 		after_dig_node = function(pos, oldnode, oldmetadata, digger)
 			pos.y = pos.y+1
 			after_dig_node(pos, name.."_t_1", digger)
 		end,
-		
+
 		on_rightclick = function(pos, node, clicker)
 			if check_player_priv(pos, clicker) then
 				on_rightclick(pos, 1, name.."_t_1", name.."_b_2", name.."_t_2", {1,2,3,0})
 			end
 		end,
-		
+
 		on_rotate = function(pos, node, user, mode, new_param2)
 			return on_rotate(pos, node, 1, user, name.."_t_1", mode)
 		end,
@@ -244,18 +244,18 @@ function doors.register_door(name, def)
 			fixed = def.selection_box_top
 		},
 		groups = def.groups,
-		
+
 		after_dig_node = function(pos, oldnode, oldmetadata, digger)
 			pos.y = pos.y-1
 			after_dig_node(pos, name.."_b_1", digger)
 		end,
-		
+
 		on_rightclick = function(pos, node, clicker)
 			if check_player_priv(pos, clicker) then
 				on_rightclick(pos, -1, name.."_b_1", name.."_t_2", name.."_b_2", {1,2,3,0})
 			end
 		end,
-		
+
 		on_rotate = function(pos, node, user, mode, new_param2)
 			return on_rotate(pos, node, -1, user, name.."_b_1", mode)
 		end,
@@ -282,18 +282,18 @@ function doors.register_door(name, def)
 			fixed = def.selection_box_bottom
 		},
 		groups = def.groups,
-		
+
 		after_dig_node = function(pos, oldnode, oldmetadata, digger)
 			pos.y = pos.y+1
 			after_dig_node(pos, name.."_t_2", digger)
 		end,
-		
+
 		on_rightclick = function(pos, node, clicker)
 			if check_player_priv(pos, clicker) then
 				on_rightclick(pos, 1, name.."_t_2", name.."_b_1", name.."_t_1", {3,0,1,2})
 			end
 		end,
-		
+
 		on_rotate = function(pos, node, user, mode, new_param2)
 			return on_rotate(pos, node, 1, user, name.."_t_2", mode)
 		end,
@@ -320,18 +320,18 @@ function doors.register_door(name, def)
 			fixed = def.selection_box_top
 		},
 		groups = def.groups,
-		
+
 		after_dig_node = function(pos, oldnode, oldmetadata, digger)
 			pos.y = pos.y-1
 			after_dig_node(pos, name.."_b_2", digger)
 		end,
-		
+
 		on_rightclick = function(pos, node, clicker)
 			if check_player_priv(pos, clicker) then
 				on_rightclick(pos, -1, name.."_b_2", name.."_t_1", name.."_b_1", {3,0,1,2})
 			end
 		end,
-		
+
 		on_rotate = function(pos, node, user, mode, new_param2)
 			return on_rotate(pos, node, -1, user, name.."_b_2", mode)
 		end,
@@ -421,6 +421,90 @@ minetest.register_craft({
 	}
 })
 
+-- From BFD: Cherry planks doors
+
+doors.register_door("doors:door_cherry", {
+	description = "Cherry Door",
+	inventory_image = "doors_wood_cherry.png",
+	groups = {choppy=2,oddly_breakable_by_hand=2,flammable=2,door=1},
+	tiles_bottom = {"doors_wood_cherry_b.png", "default_wood_cherry_planks.png"},
+	tiles_top = {"doors_wood_cherry_a.png", "default_wood_cherry_planks.png"},
+	sounds = default.node_sound_wood_defaults(),
+	sunlight = false,
+})
+
+minetest.register_craft({
+	output = "doors:door_cherry",
+	recipe = {
+		{"default:cherry_plank", "default:cherry_plank"},
+		{"default:cherry_plank", "default:cherry_plank"},
+		{"default:cherry_plank", "default:cherry_plank"}
+	}
+})
+
+-- doors tin MFF
+doors.register_door("doors:door_tin", {
+	description = "Tin Door",
+	inventory_image = "doors_tin.png",
+	groups = {snappy=1,bendy=2,cracky=1,melty=2,level=2,door=1},
+	tiles_bottom = {"doors_tin_b.png", "doors_grey2.png"},
+	tiles_top = {"doors_tin_t.png", "doors_grey2.png"},
+	only_placer_can_open = true,
+	sounds = default.node_sound_stone_defaults(),
+	sunlight = false,
+})
+
+minetest.register_craft({
+	output = "doors:door_tin",
+	recipe = {
+		{"moreores:tin_ingot", "moreores:tin_ingot"},
+		{"moreores:tin_ingot", "moreores:tin_ingot"},
+		{"moreores:tin_ingot", "moreores:tin_ingot"}
+
+	}
+})
+
+-- doors prison MFF
+doors.register_door("doors:door_prison", {
+	description = "Prison Door",
+	inventory_image = "doors_prison_inv.png",
+	groups = {snappy=1,bendy=2,cracky=1,melty=2,level=2,door=1},
+	tiles_bottom = {"doors_prison_b.png", "doors_black.png"},
+	tiles_top = {"doors_prison_t.png", "doors_black.png"},
+	only_placer_can_open = true,
+	sounds = default.node_sound_stone_defaults(),
+	sunlight = false,
+})
+
+minetest.register_craft({
+	output = "doors:door_prison",
+	recipe = {
+		{"darkage:iron_stick", "darkage:iron_stick"},
+		{"darkage:iron_stick", "darkage:iron_stick"},
+		{"darkage:iron_stick", "darkage:iron_stick"}
+
+	}
+})
+
+-- MFF gardengate white
+doors.register_door("doors:door_gardengate_white", {
+	description = "Garden Gate White Door",
+	inventory_image = "doors_gardengate_white_inv.png",
+	groups = {choppy=2,oddly_breakable_by_hand=2,flammable=2,door=1},
+	tiles_bottom = {"doors_gardengate_white_b.png", "doors_white.png"},
+	tiles_top = {"doors_gardengate_white_t.png", "doors_invisible.png"},
+	sounds = default.node_sound_wood_defaults(),
+	sunlight = false,
+})
+
+minetest.register_craft({
+	output = "doors:door_gardengate_white 2",
+	recipe = {
+		{"dye:white", "group:stick", ""},
+		{"group:stick", "group:stick", "group:stick"},
+		{"group:wood", "group:wood", "group:wood"}
+	}
+})
 
 ----trapdoor----
 
@@ -547,3 +631,25 @@ minetest.register_craft({
 	}
 })
 
+doors.register_trapdoor("doors:trapdoor_cherry", {
+	description = "Cherry tree trapdoor",
+	inventory_image = "doors_trapdoor_cherry.png",
+	wields_images = "doors_trapdoor_cherry.png",
+	tile_front = "doors_trapdoor_cherry.png",
+	tile_side = "default_wood_cherry_planks.png",
+	groups = {snappy=1, choppy=2, oddly_breakable_by_hand=2, flammable=2, door=1},
+	sounds = default.node_sound_wood_defaults(),
+	sound_open = "doors_door_open",
+	sound_close = "doors_door_close"
+})
+
+minetest.register_craft({
+	output = 'doors:trapdoor_cherry 2',
+	recipe = {
+		{'default:cherry_plank', 'default:cherry_plank', 'default:cherry_plank'},
+		{'default:cherry_plank', 'default:cherry_plank', 'default:cherry_plank'},
+	}
+})
+
+-- door 3 nodes
+dofile(minetest.get_modpath("doors").."/doors3.lua")

@@ -19,6 +19,7 @@ screwdriver.rotate_simple = function(pos, node, user, mode, new_param2)
 	end
 end
 local USES = 200
+local USES_perfect = 10000
 
 -- Handles rotation
 local function screwdriver_handler(itemstack, user, pointed_thing, mode)
@@ -81,17 +82,33 @@ local function screwdriver_handler(itemstack, user, pointed_thing, mode)
 		minetest.swap_node(pos, node)
 	end
 
-	if not minetest.setting_getbool("creative_mode") then
+	if not minetest.setting_getbool("creative_mode") and minetest.registered_tools["screwdriver:screwdriver_perfect"] then
+		itemstack:add_wear(65535 / (USES_perfect - 1))
+	elseif not minetest.setting_getbool("creative_mode") then
 		itemstack:add_wear(65535 / (USES - 1))
 	end
 
 	return itemstack
 end
 
--- Screwdriver
+-- Screwdriver (en steel à 200 utilisation)
 minetest.register_tool("screwdriver:screwdriver", {
 	description = "Screwdriver (left-click rotates face, right-click rotates axis)",
 	inventory_image = "screwdriver.png",
+	on_use = function(itemstack, user, pointed_thing)
+		screwdriver_handler(itemstack, user, pointed_thing, screwdriver.ROTATE_FACE)
+		return itemstack
+	end,
+	on_place = function(itemstack, user, pointed_thing)
+		screwdriver_handler(itemstack, user, pointed_thing, screwdriver.ROTATE_AXIS)
+		return itemstack
+	end,
+})
+
+-- Perfect Screwdriver (en mithril à 10 000 utilisations)
+minetest.register_tool("screwdriver:screwdriver_perfect", {
+	description = "Perfect Screwdriver (left-click rotates face, right-click rotates axis)",
+	inventory_image = "screwdriver_perfect.png",
 	on_use = function(itemstack, user, pointed_thing)
 		screwdriver_handler(itemstack, user, pointed_thing, screwdriver.ROTATE_FACE)
 		return itemstack
@@ -107,6 +124,14 @@ minetest.register_craft({
 	output = "screwdriver:screwdriver",
 	recipe = {
 		{"default:steel_ingot"},
+		{"group:stick"}
+	}
+})
+
+minetest.register_craft({
+	output = "screwdriver:screwdriver_perfect",
+	recipe = {
+		{"moreores:mithril_ingot"},
 		{"group:stick"}
 	}
 })

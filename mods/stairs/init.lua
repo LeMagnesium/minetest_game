@@ -172,7 +172,7 @@ function stairs.register_slab(subname, recipeitem, groups, images, description, 
 				end
 				return itemstack
 			end
-			
+
 			-- Upside down slabs
 			if p0.y - 1 == p1.y then
 				-- Turn into full block if pointing at a existing slab
@@ -344,7 +344,7 @@ stairs.register_stair_and_slab("sandstone", "default:sandstone",
 		"Sandstone Stair",
 		"Sandstone Slab",
 		default.node_sound_stone_defaults())
-		
+
 stairs.register_stair_and_slab("sandstonebrick", "default:sandstonebrick",
 		{crumbly = 2, cracky = 2},
 		{"default_sandstone_brick.png"},
@@ -407,3 +407,12 @@ stairs.register_stair_and_slab("goldblock", "default:goldblock",
 		"Gold Block Stair",
 		"Gold Block Slab",
 		default.node_sound_stone_defaults())
+-- From BFD:
+
+stairs.register_stair_and_slab("cherry_wood", "default:cherry_plank",
+		{snappy=2,choppy=2,oddly_breakable_by_hand=2,flammable=3},
+		{"default_wood_cherry_planks.png"},
+		"Cherry Plank Stair",
+		"Cherry Plank Slab",
+		"Cherry Plank Corner Stair",
+		default.node_sound_wood_defaults())
