@@ -4,6 +4,7 @@ minetest.register_craftitem("default:stick", {
 	description = "Stick",
 	inventory_image = "default_stick.png",
 	groups = {stick=1},
+	stack_max = 1000,
 })
 
 minetest.register_craftitem("default:paper", {
@@ -121,7 +122,8 @@ end)
 minetest.register_craftitem("default:coal_lump", {
 	description = "Coal Lump",
 	inventory_image = "default_coal_lump.png",
-	groups = {coal = 1}
+	groups = {coal = 1},
+	stack_max = 99, --/MFF(17/09/2015)
 })
 
 minetest.register_craftitem("default:iron_lump", {
