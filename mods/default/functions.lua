@@ -7,20 +7,40 @@
 function default.node_sound_defaults(table)
 	table = table or {}
 	table.footstep = table.footstep or
-			{name = "", gain = 1.0}
+			{name = "default_hard_footstep", gain = 0.6}
+	table.dig = table.dig or
+			{name = "default_hard_footstep", gain = 0.7}
 	table.dug = table.dug or
-			{name = "default_dug_node", gain = 0.25}
+			{name = "default_hard_footstep", gain = 0.8}
 	table.place = table.place or
-			{name = "default_place_node_hard", gain = 1.0}
+			{name = "default_hard_footstep", gain = 0.8}
 	return table
 end
 
 function default.node_sound_stone_defaults(table)
 	table = table or {}
 	table.footstep = table.footstep or
-			{name = "default_hard_footstep", gain = 0.5}
+			{name = "default_hard_footstep", gain = 0.6}
+	table.dig = table.dig or
+			{name = "default_hard_footstep", gain = 0.7}
 	table.dug = table.dug or
-			{name = "default_hard_footstep", gain = 1.0}
+			{name = "default_hard_footstep", gain = 0.8}
+	table.place = table.place or
+			{name = "default_hard_footstep", gain = 0.8}
+	default.node_sound_defaults(table)
+	return table
+end
+
+function default.node_sound_metal_defaults(table)
+	table = table or {}
+	table.footstep = table.footstep or
+			{name = "default_metal_footstep", gain = 0.575}
+	table.dig = table.dig or
+			{name = "default_metal_footstep", gain = 0.65}
+	table.dug = table.dug or
+			{name = "default_metal_footstep", gain = 0.8}
+	table.place = table.place or
+			{name = "default_metal_footstep", gain = 0.8}
 	default.node_sound_defaults(table)
 	return table
 end
@@ -28,11 +48,27 @@ end
 function default.node_sound_dirt_defaults(table)
 	table = table or {}
 	table.footstep = table.footstep or
-			{name = "default_dirt_footstep", gain = 1.0}
+			{name = "default_dirt_footstep", gain = 0.8}
+	table.dig = table.dig or
+			{name = "default_dirt_footstep", gain = 0.9}
 	table.dug = table.dug or
-			{name = "default_dirt_footstep", gain = 1.5}
+			{name = "default_dirt_footstep", gain = 1.0}
 	table.place = table.place or
-			{name = "default_place_node", gain = 1.0}
+			{name = "default_dirt_footstep", gain = 1.0}
+	default.node_sound_defaults(table)
+	return table
+end
+
+function default.node_sound_gravel_defaults(table)
+	table = table or {}
+	table.footstep = table.footstep or
+			{name = "default_dirt_footstep", gain = 0.8}
+	table.dig = table.dig or
+			{name = "default_dirt_footstep", gain = 0.9}
+	table.dug = table.dug or
+			{name = "default_dirt_footstep", gain = 1.0}
+	table.place = table.place or
+			{name = "default_dirt_footstep", gain = 1.0}
 	default.node_sound_defaults(table)
 	return table
 end
@@ -40,11 +76,13 @@ end
 function default.node_sound_sand_defaults(table)
 	table = table or {}
 	table.footstep = table.footstep or
-			{name = "default_sand_footstep", gain = 0.2}
+			{name = "default_sand_footstep", gain = 0.6}
+	table.dig = table.dig or
+			{name = "default_sand_footstep", gain = 0.7}
 	table.dug = table.dug or
-			{name = "default_sand_footstep", gain = 0.4}
+			{name = "default_sand_footstep", gain = 0.8}
 	table.place = table.place or
-			{name = "default_place_node", gain = 1.0}
+			{name = "default_sand_footstep", gain = 0.8}
 	default.node_sound_defaults(table)
 	return table
 end
@@ -52,9 +90,13 @@ end
 function default.node_sound_wood_defaults(table)
 	table = table or {}
 	table.footstep = table.footstep or
-			{name = "default_wood_footstep", gain = 0.5}
+			{name = "default_wood_footstep", gain = 0.625}
+	table.dig = table.dig or
+			{name = "default_wood_footstep", gain = 0.7}
 	table.dug = table.dug or
-			{name = "default_wood_footstep", gain = 1.0}
+			{name = "default_wood_footstep", gain = 0.8}
+	table.place = table.place or
+			{name = "default_wood_footstep", gain = 0.8}
 	default.node_sound_defaults(table)
 	return table
 end
@@ -62,13 +104,13 @@ end
 function default.node_sound_leaves_defaults(table)
 	table = table or {}
 	table.footstep = table.footstep or
-			{name = "default_grass_footstep", gain = 0.35}
-	table.dug = table.dug or
-			{name = "default_grass_footstep", gain = 0.7}
+			{name = "default_grass_footstep", gain = 0.6}
 	table.dig = table.dig or
-			{name = "default_dig_crumbly", gain = 0.4}
+			{name = "default_grass_footstep", gain = 0.7}
+	table.dug = table.dug or
+			{name = "default_snow_footstep", gain = 0.8}
 	table.place = table.place or
-			{name = "default_place_node", gain = 1.0}
+			{name = "default_snow_footstep", gain = 0.8}
 	default.node_sound_defaults(table)
 	return table
 end
@@ -76,9 +118,13 @@ end
 function default.node_sound_glass_defaults(table)
 	table = table or {}
 	table.footstep = table.footstep or
-			{name = "default_glass_footstep", gain = 0.5}
+			{name = "default_hard_footstep", gain = 0.55}
+	table.dig = table.dig or
+			{name = "default_hard_footstep", gain = 0.65}
 	table.dug = table.dug or
-			{name = "default_break_glass", gain = 1.0}
+			{name = "default_break_glass", gain = 0.8}
+	table.place = table.place or
+			{name = "default_hard_footstep", gain = 0.75}
 	default.node_sound_defaults(table)
 	return table
 end
@@ -88,24 +134,67 @@ end
 -- Lavacooling
 --
 
-default.cool_lava = function(pos, node)
-	if node.name == "default:lava_source" then
-		minetest.set_node(pos, {name = "default:obsidian"})
-	else -- Lava flowing
-		minetest.set_node(pos, {name = "default:stone"})
+local function cool_wf_vm(pos, node1, node2)
+	local t1 = os.clock()
+	local minp = vector.subtract(pos, 10)
+	local maxp = vector.add(pos, 10)
+	local manip = minetest.get_voxel_manip()
+	local emerged_pos1, emerged_pos2 = manip:read_from_map(minp, maxp)
+	local area = VoxelArea:new({MinEdge=emerged_pos1, MaxEdge=emerged_pos2})
+	local nodes = manip:get_data()
+
+	local stone = minetest.get_content_id(node2)
+	local lava = minetest.get_content_id(node1)
+
+	for i in area:iterp(minp, maxp) do
+		local p = area:position(i)
+		if nodes[i] == lava and minetest.find_node_near(p, 1, {"group:water"}) then
+			nodes[i] = stone
+		end
 	end
+
+	manip:set_data(nodes)
+	manip:write_to_map()
+	-- minetest.log("action", "Lava cooling happened at (" .. pos.x .. "," .. pos.y .. "," .. pos.z .. ").")
+	local t1 = os.clock()
+	manip:update_map()
+	-- minetest.log("action", string.format("Lava cooling updated the map after ca. %.2fs.", os.clock() - t1))
+end
+
+local del1 = 0
+local count = 0
+
+default.cool_lava_source = function(pos)
+	minetest.set_node(pos, {name = "default:obsidian"})
+	minetest.sound_play("default_cool_lava",
+		{pos = pos, max_hear_distance = 16, gain = 0.25})
+end
+
+default.cool_lava_flowing = function(pos)
+	minetest.set_node(pos, {name = "default:stone"})
 	minetest.sound_play("default_cool_lava",
 		{pos = pos, max_hear_distance = 16, gain = 0.25})
 end
 
 minetest.register_abm({
-	nodenames = {"default:lava_source", "default:lava_flowing"},
+	nodenames = {"default:lava_flowing"},
 	neighbors = {"group:water"},
 	interval = 1,
-	chance = 1,
+	chance = 2,
 	catch_up = false,
 	action = function(...)
-		default.cool_lava(...)
+		default.cool_lava_flowing(...)
+	end,
+})
+
+minetest.register_abm({
+	nodenames = {"default:lava_source"},
+	neighbors = {"group:water"},
+	interval = 1,
+	chance = 2,
+	catch_up = false,
+	action = function(...)
+		default.cool_lava_source(...)
 	end,
 })
 
@@ -121,7 +210,8 @@ function default.grow_cactus(pos, node)
 		return
 	end
 	pos.y = pos.y - 1
-	if minetest.get_item_group(minetest.get_node(pos).name, "sand") == 0 then
+	local name = minetest.get_node(pos).name --MFF
+	if minetest.get_item_group(name, "sand") == 0 and name ~= "default:dirt_with_dry_grass" then --MFF
 		return
 	end
 	pos.y = pos.y + 1
@@ -141,7 +231,7 @@ end
 function default.grow_papyrus(pos, node)
 	pos.y = pos.y - 1
 	local name = minetest.get_node(pos).name
-	if name ~= "default:dirt_with_grass" and name ~= "default:dirt" then
+	if name ~= "default:dirt_with_grass" and name ~= "default:dirt" and name ~= "default:sand" and name ~= "default:desert_sand" then --MFF
 		return
 	end
 	if not minetest.find_node_near(pos, 3, {"group:water"}) then
@@ -163,9 +253,9 @@ end
 
 minetest.register_abm({
 	nodenames = {"default:cactus"},
-	neighbors = {"group:sand"},
-	interval = 12,
-	chance = 83,
+	neighbors = {"group:sand", "default:dirt_with_dry_grass"}, --MFF
+	interval = 60,
+	chance = 25,
 	action = function(...)
 		default.grow_cactus(...)
 	end
@@ -173,9 +263,9 @@ minetest.register_abm({
 
 minetest.register_abm({
 	nodenames = {"default:papyrus"},
-	neighbors = {"default:dirt", "default:dirt_with_grass"},
-	interval = 14,
-	chance = 71,
+	neighbors = {"default:dirt", "default:dirt_with_grass", "default:sand", "default:desert_sand"}, --MFF
+	interval = 60,
+	chance = 25,
 	action = function(...)
 		default.grow_papyrus(...)
 	end
@@ -193,51 +283,6 @@ function default.dig_up(pos, node, digger)
 	if nn.name == node.name then
 		minetest.node_dig(np, nn, digger)
 	end
-end
-
-
---
--- Fence registration helper
---
-function default.register_fence(name, def)
-	minetest.register_craft({
-		output = name .. " 4",
-		recipe = {
-			{ def.material, 'group:stick', def.material },
-			{ def.material, 'group:stick', def.material },
-		}
-	})
-
-	local fence_texture = "default_fence_overlay.png^" .. def.texture ..
-			"^default_fence_overlay.png^[makealpha:255,126,126"
-	-- Allow almost everything to be overridden
-	local default_fields = {
-		paramtype = "light",
-		drawtype = "fencelike",
-		inventory_image = fence_texture,
-		wield_image = fence_texture,
-		tiles = { def.texture },
-		sunlight_propagates = true,
-		is_ground_content = false,
-		selection_box = {
-			type = "fixed",
-			fixed = {-1/7, -1/2, -1/7, 1/7, 1/2, 1/7},
-		},
-		groups = {},
-	}
-	for k, v in pairs(default_fields) do
-		if not def[k] then
-			def[k] = v
-		end
-	end
-
-	-- Always add to the fence group, even if no group provided
-	def.groups.fence = 1
-
-	def.texture = nil
-	def.material = nil
-
-	minetest.register_node(name, def)
 end
 
 
@@ -266,8 +311,8 @@ minetest.register_abm({
 	nodenames = {"group:leafdecay"},
 	neighbors = {"air", "group:liquid"},
 	-- A low interval and a high inverse chance spreads the load
-	interval = 2,
-	chance = 5,
+	interval = 1,
+	chance = 2,
 
 	action = function(p0, node, _, _)
 		--print("leafdecay ABM at "..p0.x..", "..p0.y..", "..p0.z..")")
@@ -308,7 +353,12 @@ minetest.register_abm({
 				default.leafdecay_trunk_find_allow_accumulator - 1
 		-- Assume ignore is a trunk, to make the thing
 		-- work at the border of the active area
-		local p1 = minetest.find_node_near(p0, d, {"ignore", "group:tree"})
+		local p1
+		if n0.name == "moretrees:palm_leaves" then
+			p1 = minetest.find_node_near(p0, d, {"ignore", "moretrees:palm_trunk"})
+		else
+			p1 = minetest.find_node_near(p0, d, {"ignore", "group:tree"})
+		end
 		if p1 then
 			do_preserve = true
 			if default.leafdecay_enable_cache then
@@ -339,23 +389,32 @@ minetest.register_abm({
 })
 
 
+minetest.register_on_placenode(function(pos, newnode, placer, oldnode, itemstack, pointed_thing)
+	if newnode.name ~= "default:torch" or minetest.get_item_group(oldnode.name, "water") == 0 then
+		return
+	end
+	minetest.remove_node(pos, newnode)
+	minetest.set_node(pos, oldnode)
+	minetest.add_item(pos, "default:torch")
+end)
+
 --
--- Grass growing on well-lit dirt
+-- Grass growing
 --
 
 minetest.register_abm({
 	nodenames = {"default:dirt"},
-	neighbors = {"air"},
-	interval = 6,
-	chance = 67,
 	catch_up = false,
+	interval = 30,
+	chance = 5,
 	action = function(pos, node)
 		local above = {x = pos.x, y = pos.y + 1, z = pos.z}
 		local name = minetest.get_node(above).name
 		local nodedef = minetest.registered_nodes[name]
 		if nodedef and (nodedef.sunlight_propagates or nodedef.paramtype == "light") and
 				nodedef.liquidtype == "none" and
-				(minetest.get_node_light(above) or 0) >= 13 then
+				pos.y >= 0 and
+				(minetest.get_node_light(above) or 0) >= 12 then
 			if name == "default:snow" or name == "default:snowblock" then
 				minetest.set_node(pos, {name = "default:dirt_with_snow"})
 			else
@@ -372,8 +431,8 @@ minetest.register_abm({
 
 minetest.register_abm({
 	nodenames = {"default:dirt_with_grass", "default:dirt_with_dry_grass"},
-	interval = 8,
-	chance = 50,
+	interval = 2,
+	chance = 20,
 	catch_up = false,
 	action = function(pos, node)
 		local above = {x = pos.x, y = pos.y + 1, z = pos.z}
@@ -388,17 +447,17 @@ minetest.register_abm({
 })
 
 
---
+--[[
 -- Moss growth on cobble near water
 --
 
 minetest.register_abm({
 	nodenames = {"default:cobble"},
 	neighbors = {"group:water"},
-	interval = 16,
+	interval = 17,
 	chance = 200,
 	catch_up = false,
 	action = function(pos, node)
 		minetest.set_node(pos, {name = "default:mossycobble"})
 	end
-})
+})]]
